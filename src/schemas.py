@@ -30,13 +30,6 @@ class Choice(BaseModel):
     justification: str
 
 
-# class BoardWords(TypedDict):
-#     red: List[str]
-#     blue: List[str]
-#     neutral: List[str]
-#     black: List[str]
-
-
 class PlayerData(BaseModel):
     model_name: str
     temperature: float
