@@ -152,30 +152,6 @@ class Captain(Player):
             neutral_words, 
             black_word
         ) -> tuple[Code, str]:
-
-        # system_prompt = {
-        #     "role": "system", 
-        #     "content": captain_system_prompt
-        # }
-
-        # round_message = {
-        #     "role": "user", 
-        #     "content": captain_round_message.format(
-        #         team_color=self.team, 
-        #         game_history=game_history,
-        #         red_words=red_words,
-        #         blue_words=blue_words,
-        #         neutral_words=neutral_words,
-        #         black_word=black_word
-        #     )
-        # }
-
-        # response = ollama.chat(
-        #     model=self.model_name,
-        #     messages=[system_prompt, round_message], # TODO: add messages
-        #     tools=self.tools,
-        #     options={"temperature": self.temperature, "seed": self.seed}
-        # )
         msg = captain_round_message.format(
                 team_color=self.team, 
                 game_history=game_history,
@@ -222,28 +198,6 @@ class Guesser(Player):
         )
 
     def choose_words(self, game_history, words, secret_code: Tuple) -> tuple[Choice, str]:
-
-        # system_prompt = {
-        #     "role": "system", 
-        #     "content": guesser_system_prompt
-        # }
-
-        # round_message = {
-        #     "role": "user", 
-        #     "content": guesser_round_message.format(
-        #         team_color=self.team, 
-        #         game_history=game_history,
-        #         words=words,
-        #         secret_code=secret_code
-        #     )
-        # }
-
-        # response = ollama.chat(
-        #     model=self.model_name,
-        #     messages=[system_prompt, round_message], # TODO: add messages
-        #     tools=self.tools,
-        #     options={"temperature": self.temperature, "seed": self.seed}
-        # )
         msg = guesser_round_message.format(
                 team_color=self.team, 
                 game_history=game_history,
@@ -340,13 +294,6 @@ class SecretCodeGame:
                 blue_team = first_team_round_info if first_team.color == "blue" else second_team_round_info,
                 red_team = second_team_round_info if second_team.color == "red" else first_team_round_info
             )
-            # round_info = {
-            #     "round": self.round,
-            #         "teams": {
-            #             first_team.color: first_team_round_info,
-            #             second_team.color: second_team_round_info
-            #         }
-            # }
             total_rounds_info.append(round_info)
         self.save_results(total_rounds_info)
         return
