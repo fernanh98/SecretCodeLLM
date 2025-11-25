@@ -25,7 +25,6 @@ from src.prompts import (
 from src.words import WORDS
 
 
-
 class Board:
 
     words: List[str]
@@ -33,7 +32,6 @@ class Board:
     second_team_color: Literal["red", "blue"]
     team_words: TeamWords
     left_team_words: LeftTeamWords
-    known_words: List[str] # TODO: remove, Not used
 
     def __init__(self, words: List[str] = [w.lower() for w in WORDS]):
         self._set_up_board(words)
@@ -456,37 +454,4 @@ class SecretCodeGame:
             rounds_info = rounds_info,
             winner_team = self.winner_team
         )
-        # self.results = {
-        #     "words": self.board.words,
-        #     "team_order": [self.board.first_team_color, self.board.second_team_color],
-        #     "teams": {
-        #         "blue": {
-        #             "captain":{
-        #                 "model_name": self.team_blue.captain.name,
-        #                 "temperature": self.team_blue.captain.temperature,
-        #                 "seed": self.team_blue.captain.seed
-        #             },
-        #             "guesser":{
-        #                 "model_name": self.team_blue.guesser.name,
-        #                 "temperature": self.team_blue.guesser.temperature,
-        #                 "seed": self.team_blue.guesser.seed
-        #             }
-        #         },
-        #         "red":{
-        #             "captain":{
-        #                 "model_name": self.team_red.captain.name,
-        #                 "temperature": self.team_red.captain.temperature,
-        #                 "seed": self.team_red.captain.seed
-        #             },
-        #             "guesser":{
-        #                 "model_name": self.team_red.guesser.name,
-        #                 "temperature": self.team_red.guesser.temperature,
-        #                 "seed": self.team_red.guesser.seed
-        #             }
-        #         },
-        #     },
-        #     "num_rounds": self.round,
-        #     "rounds": rounds_info,
-        #     "winner_team": self.winner_team
-        # }
         return
